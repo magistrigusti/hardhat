@@ -19,7 +19,8 @@
   "homepage": "https://github.com/magistrigusti/hardhat#readme",
   "devDependencies": {
     "@nomicfoundation/hardhat-toolbox": "^5.0.0",
-    "hardhat": "^2.22.15"
+    "hardhat": "^2.22.15",
+    "hardhat-deploy": "^0.14.0"
   },
   "dependencies": {
     "ethers": "^6.13.4"
