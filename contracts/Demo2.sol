@@ -13,13 +13,30 @@ contract Demo {
       address nextParticipant = participants[i];
 
       (bool ok, ) = nextParticipant.call{value: bets[nextParticipant]}("");
-      require(ok, "failed");
-      // if(!ok) {failedRefunds.push(nextParticipant); }
+      // require(ok, "failed");
+      if(!ok) {failedRefunds.push(nextParticipant); }
     }
   }
 
   receive() external payable {
     participants.push(msg.sender);
     bets[msg.sender] = msg.value;
+  }
+}
+
+contract Hacker {
+  address payable toHack;
+
+  constructor(address _toHack) payable {
+    toHack = payable(_toHack);
+  }
+  
+  function run() external {
+    (bool ok,) = toHack.call{value: 100}("");
+    require(ok);
+  }
+
+  receive() external payable {
+    assert(false);
   }
 }
