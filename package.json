@@ -23,7 +23,8 @@
     "hardhat-deploy": "^0.14.0"
   },
   "dependencies": {
-    "ethers": "^6.13.4"
+    "ethers": "^6.13.4",
+    "ts-node": "^10.9.1"
   },
   "directories": {
     "test": "test"
