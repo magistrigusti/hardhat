@@ -7,22 +7,25 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 contract Dominum is Ownable {
   ERC20 public DOMToken;
   uint256 public constant TOTAL_SUPPLY = 15_000_000 * 10**18;
+  uint256 public constant INFLATION_RATE = 100;
+  uint256 public constant TAX_RATE = 10;
+  
   uint256 public constant FIRST_MONTH_ALLOCATION = (TOTAL_SUPPLY * 50) / 100;
   uint256 public constant NEXT_FIVE_MONTHS_ALLOCATION = (TOTAL_SUPPLY * 20) / 100;
   uint256 public constant FIRST_YEAR_ALLOCATION = (TOTAL_SUPPLY * 85) / 100;
   uint256 public constant SECOND_YEAR_ALLOCATION = (TOTAL_SUPPLY * 10) / 100;
   uint256 public constant THIRD_YEAR_ALLOCATION = (TOTAL_SUPPLY * 5) / 100;
-  uint256 public constant MINT_PERIOD = 30 days;
-  uint256 public constant INFLATION_RATE = 100;
-  uint256 public constant TAX_RATE = 10;
+  uint256 public constant MINT_PERIOD = 1 days;
+  
 
   address public immutable inflationWallet;
   address public immutable taxWallet;
+  
   uint256 public startTime;
   uint256 public totalMined;
   uint256 public lastMintTime;
 
-  mapping(address => uint256) publiclastMineTime;
+  mapping(address => uint256) public lastMineTime;
 
   event Mined(address indexed miner, uint256 amount);
   event AdminMined(address indexed admin, uint256 amount);
@@ -34,9 +37,10 @@ contract Dominum is Ownable {
     require(_taxWallet != address(0), "Invalid tax wallet");
 
     DOMToken = ERC20(_DOMToken);
+    statTime = block.timestamp;
+
     inflationWallet = _inflationWallet;
     taxWallet = _taxWallet;
-    statTime = block.timestamp;
     lastMintTime = block.timestamp;
   }
 
