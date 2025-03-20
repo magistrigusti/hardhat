@@ -98,7 +98,7 @@ contract Dominum is Ownable {
     } else if (elapsedTime <24 * 30 days) {
       return SECOND_YEAR_ALLOCATION / (12 * 30);
     } else if (elapsedTime < 36 * 30 days) {
-      return THIRD_YEAR_ALLOCATION / (12 * 30);
+      return THIRD_YEAR_ALLOCATION / (24 * 30);
     }
     
     return 0;
