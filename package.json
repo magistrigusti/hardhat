@@ -18,7 +18,11 @@
   },
   "homepage": "https://github.com/magistrigusti/hardhat#readme",
   "devDependencies": {
+    "@chainLink/contracts": "^0.8.0",
     "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "@openzeppelin/contracts": "^5.0.0",
+    "defender-relay-client": "^1.1.0",
+    "dotenv": "^16.0.3",
     "hardhat": "^2.22.15",
     "hardhat-deploy": "^0.14.0"
   },
